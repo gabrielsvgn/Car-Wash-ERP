@@ -1,17 +1,14 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Enum
 from database.connection import Base
+import enum
+
+class VehicleColor(enum.Enum):
+    black = "Black"
+    white = "White"
+    blue = 
 
 class Vehicle(Base):
     __tablename__ = "vehicle"
-
-    COLOR = (
-        ("VERMELHO", "VERMELHO"),
-        ("VERDE", "VERDE"),
-        ("AZUL", "AZUL"),
-        ("AMARELO", "AMARELO"),
-        ("BRANCO", "BRANCO"),
-        ("PRETO", "PRETO")
-    )
 
     idvehicle = Column("idvehicle", Integer, primary_key=True, autoincrement=True)
     idcar_model = Column("idcar_model", Integer, ForeignKey("car_model.idcar_model"))
