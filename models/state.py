@@ -7,4 +7,7 @@ class State(Base):
     idstate = Column("idstate", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String, nullable=False, unique=True)
 
+    def __init__(self, name):
+        self.name = name
+
     

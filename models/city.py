@@ -8,5 +8,11 @@ class City(Base):
     name = Column("name", String, nullable=False, unique=True)
     idstate = Column("idstate", Integer, ForeignKey("state.idstate"))
 
+    def __init__(self, name, idstate):
+        self.name = name
+        self.idstate = idstate
+
+    
+
    
   
