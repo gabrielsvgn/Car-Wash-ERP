@@ -2,3 +2,5 @@ database/connection.py
 database/__pycache__
 models/__pycache__
 .env
+__pycache__/
+*.pyc
