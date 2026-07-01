@@ -1,0 +1,16 @@
+from pydantic import BaseModel
+from typing import Optional
+
+class UserSchema(BaseModel):
+    name: str
+    email: str
+    contact: str
+    password: str
+    tax_id: str
+    admin: Optional[bool]
+    idcity: Optional[int] 
+    street: Optional[str] 
+    house_number: Optional[int] 
+
+    class Config:
+        from_attributes = True
