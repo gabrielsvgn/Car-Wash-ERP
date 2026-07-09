@@ -10,24 +10,24 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 ## Funcionalidades implementadas
 
 
-- [ ] Cadastro de clientes, veículos e funcionários
-- [ ] Migrations com Alembic
+- [x] Cadastro de clientes, veículos e funcionários
+- [x] Migrations com Alembic
 
 
 ## Planejadas
 
 
-- [x] Gestão financeira (receitas e despesas)
-- [x] Controle de estoque de produtos
-- [x] Relatórios financeiros por período
-- [x] Dashboard com indicadores da estética
-- [x] Histórico de serviços por veículo
-- [x] Controle de comissões por funcionário
-- [x] Notificações de agendamento
-- [x] Autenticação com JWT e OAuth2
-- [x] Cadastro de clientes, veículos e funcionários
-- [x] Sistema de agendamentos
-- [x] Cadastro de serviços oferecidos pela estética
+- [ ] Gestão financeira (receitas e despesas)
+- [ ] Controle de estoque de produtos
+- [ ] Relatórios financeiros por período
+- [ ] Dashboard com indicadores da estética
+- [ ] Histórico de serviços por veículo
+- [ ] Controle de comissões por funcionário
+- [ ] Notificações de agendamento
+- [ ] Autenticação com JWT e OAuth2
+- [ ] Cadastro de clientes, veículos e funcionários
+- [ ] Sistema de agendamentos
+- [ ] Cadastro de serviços oferecidos pela estética
 
 ## Tecnologias
 
