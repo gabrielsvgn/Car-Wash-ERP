@@ -10,8 +10,8 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 ## Funcionalidades implementadas
 
 
-- [x] Cadastro de clientes, veículos e funcionários
-- [x] Migrations com Alembic
+- [x] Rotas de autenticação de login utilizando schemas, login utilizando o formulário oauth2, cadastro, refresh token e change password
+- [x] Dependência de verificação de token para validar usuários em rotas protegidas
 
 
 ## Planejadas
