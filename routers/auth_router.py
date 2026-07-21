@@ -10,6 +10,7 @@ from security.jwt import create_token
 from datetime import timedelta
 from dependencies.verify_token import verify_token
 from fastapi.security import OAuth2PasswordRequestForm
+from schemas.change_password_schema import ChangePasswordSchema
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -43,7 +44,7 @@ async def login(login_schema: LoginSchema, session: Session = Depends(get_sessio
     }
 
 @auth_router.post("/login-form")
-async def login_orm(data_form: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
+async def login_form(data_form: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
     user = auth_user(data_form.username, data_form.password, session)
     if not user:
         raise HTTPException(status_code=401, detail="User not found or invalid credentials")
@@ -60,3 +61,15 @@ async def refresh_token(user: User = Depends(verify_token)):
         "access_token": access_token,
         "token_type": "Bearer"
     }
+
+@auth_router.put("/change-password")
+async def change_password(password_schema: ChangePasswordSchema, user: User = Depends(verify_token), session: Session = Depends(get_session)):
+    password_is_valid = bcrypt_context.verify(password_schema.current_password, user.password)
+    if not password_is_valid:
+        raise HTTPException(status_code=400, detail="The password is not valid")
+    new_password = bcrypt_context.hash(password_schema.new_password)
+    if password_schema.new_password == password_schema.current_password:
+        raise HTTPException(status_code=400, detail="The entered password cannot be the same as the old password.")
+    user.password = new_password
+    session.commit()
+    return {"message": "Password successffully changed"}
