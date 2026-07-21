@@ -7,6 +7,9 @@ from sqlalchemy.orm import Session
 from schemas.login_schema import LoginSchema
 from services.auth_service import auth_user
 from security.jwt import create_token
+from datetime import timedelta
+from dependencies.verify_token import verify_token
+from fastapi.security import OAuth2PasswordRequestForm
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -30,10 +33,30 @@ async def create_account(user_schema: UserSchema, session: Session = Depends(get
 async def login(login_schema: LoginSchema, session: Session = Depends(get_session)):
     user = auth_user(login_schema.email, login_schema.password, session)
     if not user:
-        raise HTTPException(status_code=400, detail="User not found or invalid credentials. ")
-    else:
-        access_token = create_token(user.idusuario)
-        return {
-            "access_token": access_token,
-            "token_type": "Bearer"
-        }
+        raise HTTPException(status_code=401, detail="User not found or invalid credentials")
+    access_token = create_token(user.idusuario)
+    refresh_token = create_token(user.idusuario, timedelta(days=7))
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "Bearer"
+    }
+
+@auth_router.post("/login-form")
+async def login_orm(data_form: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
+    user = auth_user(data_form.username, data_form.password, session)
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found or invalid credentials")
+    access_token = create_token(user.idusuario)
+    return {
+        "access_token": access_token,
+        "token_type": "Bearer"
+    }
+    
+@auth_router.post("/refresh")
+async def refresh_token(user: User = Depends(verify_token)):
+    access_token = create_token(user.idusuario)
+    return {
+        "access_token": access_token,
+        "token_type": "Bearer"
+    }
