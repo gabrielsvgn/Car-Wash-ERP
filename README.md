@@ -9,16 +9,25 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 
 ## Funcionalidades implementadas
 
+### Rotas de Autenticação
+- [x] Cadastro de usuários
+- [x] Login utilizando JWT
+- [x] Login via OAuth2 Password Flow para testes de API
+- [x] Refresh Token
+- [x] Alteração de senha
+- [x] Proteção de rotas com autenticação
 
-- [x] Rotas de autenticação de login utilizando schemas, login utilizando o formulário oauth2, cadastro, refresh token e change password
-- [x] Dependência de verificação de token para validar usuários em rotas protegidas
-- [x] Rota de veículos
-    - [x] Criação da marca: CRUD completo
-    - [x] Criação do modelo: CRUD completo
-    - [x] Criação do veículo: CRUD completo
-- [x] Rota de CEP
-    - [x] Criação da cidade: CRUD completo
-    - [x] Criação do estado: CRUD completo
+### Rotas de Veículos
+- [x] CRUD completo de marca
+- [x] CRUD completo de modelo
+- [x] CRUD completo de veículo
+- [x] Validação de placas duplicadas
+- [x] Relacionamento entre marca, modelo e veículo
+
+### Rotas de CEP
+- [x] CRUD completo de cidade
+- [x] CRUD completo de estado
+- [x] Relacionamente entre cidade e estado
 
 
 ## Planejadas
