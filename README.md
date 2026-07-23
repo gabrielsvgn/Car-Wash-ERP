@@ -12,6 +12,13 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 
 - [x] Rotas de autenticação de login utilizando schemas, login utilizando o formulário oauth2, cadastro, refresh token e change password
 - [x] Dependência de verificação de token para validar usuários em rotas protegidas
+- [x] Rota de veículos
+    - [x] Criação da marca: CRUD completo
+    - [x] Criação do modelo: CRUD completo
+    - [x] Criação do veículo: CRUD completo
+- [x] Rota de CEP
+    - [x] Criação da cidade: CRUD completo
+    - [x] Criação do estado: CRUD completo
 
 
 ## Planejadas
