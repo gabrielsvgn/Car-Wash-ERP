@@ -40,8 +40,7 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 - [ ] Histórico de serviços por veículo
 - [ ] Controle de comissões por funcionário
 - [ ] Notificações de agendamento
-- [ ] Autenticação com JWT e OAuth2
-- [ ] Cadastro de clientes, veículos e funcionários
+- [ ] Cadastro de clientes e funcionários
 - [ ] Sistema de agendamentos
 - [ ] Cadastro de serviços oferecidos pela estética
 
