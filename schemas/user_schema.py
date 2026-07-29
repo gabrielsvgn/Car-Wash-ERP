@@ -7,7 +7,6 @@ class UserSchema(BaseModel):
     contact: str
     password: str
     tax_id: str
-    admin: Optional[bool]
     idcity: Optional[int] 
     street: Optional[str] 
     house_number: Optional[int] 
