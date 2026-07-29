@@ -12,7 +12,7 @@ from dependencies.verify_token import verify_token
 from fastapi.security import OAuth2PasswordRequestForm
 from schemas.change_password_schema import ChangePasswordSchema
 
-auth_router = APIRouter(prefix="/auth", tags=["auth"])
+auth_router = APIRouter(prefix="/auth", tags=["Auth"])
 
 @auth_router.post("/create_account")
 async def create_account(user_schema: UserSchema, session: Session = Depends(get_session)):
