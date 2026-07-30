@@ -13,7 +13,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from schemas.change_password_schema import ChangePasswordSchema
 
 auth_router = APIRouter(prefix="/auth", tags=["Auth"])
-
+    
 @auth_router.post("/create_account")
 async def create_account(user_schema: UserSchema, session: Session = Depends(get_session)):
     user = session.query(User).filter(User.email==user_schema.email).first()
@@ -28,7 +28,6 @@ async def create_account(user_schema: UserSchema, session: Session = Depends(get
         session.add(new_user)
         session.commit()
         return {"message": "user successfully registered"}
-    
     
 @auth_router.post("/login")
 async def login(login_schema: LoginSchema, session: Session = Depends(get_session)):
