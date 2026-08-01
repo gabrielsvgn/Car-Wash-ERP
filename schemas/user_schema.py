@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
-class UserSchema(BaseModel):
+class UserCreate(BaseModel):
     name: str
     email: str
     contact: str

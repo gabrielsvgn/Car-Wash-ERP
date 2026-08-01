@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from models.user import User
 from dependencies.session import get_session
 from security.password import bcrypt_context
-from schemas.user_schema import UserSchema
+from schemas.user_schema import UserCreate
 from sqlalchemy.orm import Session
 from schemas.login_schema import LoginSchema
 from services.auth_service import auth_user
@@ -15,7 +15,7 @@ from schemas.change_password_schema import ChangePasswordSchema
 auth_router = APIRouter(prefix="/auth", tags=["Auth"])
     
 @auth_router.post("/create_account")
-async def create_account(user_schema: UserSchema, session: Session = Depends(get_session)):
+async def create_account(user_schema: UserCreate, session: Session = Depends(get_session)):
     user = session.query(User).filter(User.email==user_schema.email).first()
     tax_id = session.query(User).filter(User.tax_id==user_schema.tax_id).first()
     if user:
@@ -24,7 +24,7 @@ async def create_account(user_schema: UserSchema, session: Session = Depends(get
         raise HTTPException(status_code=400, detail="tax_id already registered")
     else:
         encrypted_password = bcrypt_context.hash(user_schema.password)
-        new_user = User(name=user_schema.name, email=user_schema.email, contact=user_schema.contact, password=encrypted_password, tax_id=user_schema.tax_id, admin=user_schema.admin, idcity=user_schema.idcity, street=user_schema.street, house_number=user_schema.house_number)
+        new_user = User(name=user_schema.name, email=user_schema.email, contact=user_schema.contact, password=encrypted_password, tax_id=user_schema.tax_id, idcity=user_schema.idcity, street=user_schema.street, house_number=user_schema.house_number)
         session.add(new_user)
         session.commit()
         return {"message": "user successfully registered"}
