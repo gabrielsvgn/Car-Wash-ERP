@@ -8,17 +8,25 @@ from models.user import User
 
 users_router = APIRouter(prefix="/users", tags=["Users"])
 
-@users_router.put("/admin/{idusuario}")
-async def set_admin(idusuario: int, user: User = Depends(verify_admin), session: Session = Depends(get_session)):
-    set_user = session.query(User).filter(User.idusuario==idusuario).first() 
-    if not set_user:
+@users_router.put("/admin/{iduser}")
+async def set_admin(iduser: int, user: User = Depends(verify_admin), session: Session = Depends(get_session)):
+    user_admin = session.query(User).filter(User.idusuario==iduser).first() 
+    if not user_admin:
         raise HTTPException(status_code=404, detail="The user was not found")
-    if set_user.admin:
+    if user_admin.admin:
         raise HTTPException(status_code=409, detail="User is already an admin")
-    set_user.admin = True
+    user_admin.admin = True
     session.commit()
-    return {"message": f"The user {set_user.name} was set as admin"}
+    return {"message": f"The user {user_admin.name} was set as admin"}
 
-
-
+@users_router.put("/admin{iduser}/remove")
+async def remove_admin(iduser: int, user: User = Depends(verify_admin), session: Session = Depends(get_session)):
+    user_admin = session.query(User).filter(User.idusuario==iduser).first()
+    if not user_admin:
+        raise HTTPException(status_code=404, detail="The user was not found")
+    if not user_admin.admin:
+            raise HTTPException(status_code=409, detail="User is not an admin")
+    user_admin.admin = False
+    session.commit()
+    return {"message": f"The user {user_admin.name} has been removed as an admin"}
 
