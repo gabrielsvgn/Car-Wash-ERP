@@ -1,6 +1,6 @@
 ## AutoDetail ERP — Sistema de Gestão para Estética Automotiva
 
-Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com FastAPI e PostgreSQL. Centraliza o controle de agendamentos, clientes, veículos, funcionários e financeiro em uma única plataforma.
+Sistema ERP para gestão de estéticas automotivas, desenvolvido com FastAPI e PostgreSQL. Centraliza o controle de agendamentos, clientes, veículos, funcionários e financeiro em uma única plataforma.
 
 
 **Projeto em desenvolvimento ativo**
@@ -16,18 +16,23 @@ Sistema ERP completo para gestão de estéticas automotivas, desenvolvido com Fa
 - [x] Refresh Token
 - [x] Alteração de senha
 - [x] Proteção de rotas com autenticação
+- [x] Proteção de rotas com autenticação de administrador
 
 ### Rotas de Veículos
-- [x] CRUD completo de marca
-- [x] CRUD completo de modelo
-- [x] CRUD completo de veículo
+- [x] CRUD de marca
+- [x] CRUD de modelo
+- [x] CRUD de veículo
 - [x] Validação de placas duplicadas
 - [x] Relacionamento entre marca, modelo e veículo
 
 ### Rotas de CEP
-- [x] CRUD completo de cidade
-- [x] CRUD completo de estado
+- [x] CRUD de cidade
+- [x] CRUD de estado
 - [x] Relacionamente entre cidade e estado
+
+### Rotas de Usuários
+- [x] Implementada a funcionalidade de gerenciamento de administradores
+- [x] Implementada a funcionalidade de listar usuários da plataforma
 
 
 ## Planejadas
