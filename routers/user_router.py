@@ -4,6 +4,7 @@ from dependencies.verify_token import verify_token
 from dependencies.verify_admin import verify_admin
 from sqlalchemy.orm import Session
 from models.user import User
+from schemas.user_schema import UserResponseSchema
 
 
 users_router = APIRouter(prefix="/users", tags=["Users"])
@@ -29,4 +30,10 @@ async def remove_admin(iduser: int, user: User = Depends(verify_admin), session:
     user_admin.admin = False
     session.commit()
     return {"message": f"The user {user_admin.name} has been removed as an admin"}
+
+@users_router.get("/admin/user", response_model=list[UserResponseSchema])
+async def list_users(user: User = Depends(verify_admin), session: Session = Depends(get_session)):
+     users = session.query(User).all()
+     return users
+
 
