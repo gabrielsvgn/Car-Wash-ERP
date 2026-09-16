@@ -36,7 +36,7 @@ async def list_users(user: User = Depends(verify_admin), session: Session = Depe
      users = session.query(User).all()
      return users
 
-@users_router.delete("/admin/delete")
+@users_router.delete("/delete")
 async def delete_account(user: User = Depends(verify_token), session: Session = Depends(get_session)):
      current_user = session.query(User).filter(User.idusuario==user.idusuario).first()
      session.delete(current_user)

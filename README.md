@@ -65,44 +65,44 @@ Sistema ERP para gestão de estéticas automotivas, desenvolvido com FastAPI e P
 
 ## Como rodar o projeto
 
-**Pré-requisitos**
+**Pré Requisitos**
 
+- Docker Desktop instalado
+- Git instalado
 
-Python 3.10+
-PostgreSQL instalado e rodando
+**1. Clone o respositório**
+'''
+git clone https://github.com/gabrielsvgn/Car-Wash-ERP.git .
+cd seu-repo
+'''
 
+**2. Configure as variáveis de ambiente**
+Crie um arquivo '.env' na raiz baseado no '.env.example':
+'cp .env.example .env'
 
-## Instalação
+Preencha o '.env' com suas credenciais
+'''
+DATABASE_URL=postgresql://usuario:senha@db:5432/nome_do_banco
+SECRET_KEY=sua_chave_secreta
+ALGORITHM=HS256
+ACCESS_EXPIRED_TOKEN=30
+POSTGRES_USER=usuario
+POSTGRES_PASSWORD=senha
+POSTGRES_DB=nome_do_banco
+'''
 
-**Clone o repositório**
-`git clone https://github.com/gabrielsvgn/Car-Wash-ERP.git .`
+* **O host na 'DATABASE_URL' deve ser sempre 'db'!**
 
-**Entre na pasta principal**
-`cd '..\Sistema Financeiro Estética Automotiva\'`
+**3. Suba o projeto**
+'''
+docker-compose up --build
+'''
 
-# Crie e ative o ambiente virtual
-`python -m venv .venv`
-`.venv\Scripts\activate`
+O Docker vai automaticamente:
+- ✅ Criar e inicializar o banco de dados PostgreSQL
+- ✅ Rodar as migrations com Alembic
+- ✅ Subir a API com Uvicorn
 
-# Instale as dependências
-`pip install -r requirements.txt`
+**4. Acesse a documentação**
 
-## Configuração
-
-**Crie um arquivo .env na raiz com as seguintes variáveis:**
-
-`DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco`
-`SECRET_KEY=sua_chave_secreta`
-`ALGORITHM=HS256`
-
-## Banco de dados
-
-**Aplique as migrations**
-
-`alembic upgrade head`
-
-## Rodando
-
-`uvicorn main:app --reload`
-
-**Acesse a documentação interativa em: http://localhost:8000/docs**
+http://localhost:8000/docs

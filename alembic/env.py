@@ -3,8 +3,11 @@ from sqlalchemy import engine_from_config, create_engine
 from sqlalchemy import pool
 from alembic import context
 
+from dotenv import load_dotenv
 import sys
 import os
+load_dotenv()
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -12,16 +15,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
 config = context.config
 
 database_url = os.getenv("DATABASE_URL")
 
-config.set_main_option("sqlalchemy_url", database_url)
+config.set_main_option("sqlalchemy.url", database_url)
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)

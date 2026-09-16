@@ -11,9 +11,5 @@ engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine,
                        autocommit=False,
                        autoflush=False)
-session = Session()
 
 Base = declarative_base()
-
-# Criação do banco
-Base.metadata.create_all(bind=engine)
