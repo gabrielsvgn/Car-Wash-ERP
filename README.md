@@ -71,17 +71,17 @@ Sistema ERP para gestão de estéticas automotivas, desenvolvido com FastAPI e P
 - Git instalado
 
 **1. Clone o respositório**
-'''
+```
 git clone https://github.com/gabrielsvgn/Car-Wash-ERP.git .
 cd seu-repo
-'''
+```
 
 **2. Configure as variáveis de ambiente**
-Crie um arquivo '.env' na raiz baseado no '.env.example':
-'cp .env.example .env'
+Crie um arquivo `.env` na raiz baseado no `.env.example`:
+`cp .env.example .env`
 
-Preencha o '.env' com suas credenciais
-'''
+Preencha o `.env` com suas credenciais
+```
 DATABASE_URL=postgresql://usuario:senha@db:5432/nome_do_banco
 SECRET_KEY=sua_chave_secreta
 ALGORITHM=HS256
@@ -89,14 +89,14 @@ ACCESS_EXPIRED_TOKEN=30
 POSTGRES_USER=usuario
 POSTGRES_PASSWORD=senha
 POSTGRES_DB=nome_do_banco
-'''
+```
 
-* **O host na 'DATABASE_URL' deve ser sempre 'db'!**
+* **O host na DATABASE_URL deve ser sempre "db"!**
 
 **3. Suba o projeto**
-'''
+```
 docker-compose up --build
-'''
+```
 
 O Docker vai automaticamente:
 - ✅ Criar e inicializar o banco de dados PostgreSQL
